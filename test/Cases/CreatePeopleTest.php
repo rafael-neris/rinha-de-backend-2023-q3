@@ -78,4 +78,32 @@ final class CreatePeopleTest extends HttpTestCase
 
         assertSame(422, $response->getStatusCode());
     }
+
+    public function testCreatePeopleWithEmptyBirthDate(): void
+    {
+        /** @var Response $response */
+        $response = $this->request('post', '/pessoas', [
+            'json' => [
+                'apelido' => 'opencodeco',
+                'nome' => 'OpenCodeCo',
+                'nascimento' => '',
+            ],
+        ]);
+
+        assertSame(422, $response->getStatusCode());
+    }
+
+    public function testCreatePeopleWithNullBirthDate(): void
+    {
+        /** @var Response $response */
+        $response = $this->request('post', '/pessoas', [
+            'json' => [
+                'apelido' => 'opencodeco',
+                'nome' => 'OpenCodeCo',
+                'nascimento' => null,
+            ],
+        ]);
+
+        assertSame(422, $response->getStatusCode());
+    }
 }
