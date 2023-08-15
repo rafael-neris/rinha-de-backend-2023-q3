@@ -12,6 +12,8 @@ declare(strict_types=1);
 
 namespace App\Request;
 
+use App\Model\Person;
+use Hyperf\Codec\Json;
 use Hyperf\Validation\Request\FormRequest;
 
 final class PersonRequest extends FormRequest
@@ -34,6 +36,20 @@ final class PersonRequest extends FormRequest
             'apelido' => 'required|max:32',
             'nome' => 'required|max:100',
             'nascimento' => 'required|date_format:Y-m-d',
+            'stack' => 'array'
         ];
+    }
+
+    public function toPerson(): Person
+    {
+        $data = $this->validated();
+        
+        return Person::create([
+            'id' => random_bytes(16),
+            'nick' => $data['apelido'],
+            'name' => $data['nome'],
+            'birth' => $data['nascimento'],
+            'stack' => Json::encode($data['stack'] ?? null),
+        ]);
     }
 }

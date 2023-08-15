@@ -142,7 +142,7 @@ final class CreatePersonTest extends HttpTestCase
         assertSame(422, $response->getStatusCode());
     }
 
-    public function testCreatePerson(): void
+    public function testCreatePersonWithNullStack(): void
     {
         /** @var Response $response */
         $response = $this->request('POST', '/pessoas', [
@@ -153,6 +153,24 @@ final class CreatePersonTest extends HttpTestCase
                 'apelido' => 'opencodeco',
                 'nome' => 'OpenCodeCo',
                 'nascimento' => '2023-07-01',
+            ],
+        ]);
+
+        assertSame(201, $response->getStatusCode(), $response->getBody()->getContents());
+    }
+
+    public function testCreatePersonWithSomeStack(): void
+    {
+        /** @var Response $response */
+        $response = $this->request('POST', '/pessoas', [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+            'json' => [
+                'apelido' => 'opencodeco',
+                'nome' => 'OpenCodeCo',
+                'nascimento' => '2023-07-01',
+                'stack' => ['PHP', 'Swoole', 'Hyperf'],
             ],
         ]);
 

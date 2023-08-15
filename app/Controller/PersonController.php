@@ -21,8 +21,9 @@ final class PersonController
 {
     public function create(PersonRequest $request, ResponseInterface $response): MessageResponseInterface
     {
-        $person = $request->validated();
-
+        $person = $request->toPerson();
+        $person->saveOrFail();
+        
         return $response->json($person)->withStatus(201);
     }
 
