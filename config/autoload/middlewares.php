@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 /**
- * This file is part of Hyperf.
+ * This file is part of OpenCodeCo.
  *
- * @link     https://www.hyperf.io
- * @document https://hyperf.wiki
- * @contact  group@hyperf.io
- * @license  https://github.com/hyperf/hyperf/blob/master/LICENSE
+ * @link     https://github.com/opencodeco/rinha-de-backend-2023-q3
+ * @document https://github.com/opencodeco/rinha-de-backend-2023-q3/wiki
+ * @contact  https://github.com/opencodeco/rinha-de-backend-2023-q3/discussions
+ * @license  https://github.com/opencodeco/rinha-de-backend-2023-q3/blob/dev/LICENSE
  */
 return [
     'http' => [
