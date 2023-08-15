@@ -9,20 +9,8 @@ declare(strict_types=1);
  * @contact  https://github.com/opencodeco/rinha-de-backend-2023-q3/discussions
  * @license  https://github.com/opencodeco/rinha-de-backend-2023-q3/blob/dev/LICENSE
  */
-
-namespace Test\Cases;
-
-use Test\HttpTestCase;
-
-/**
- * @internal
- * @coversNothing
- */
-class ExampleTest extends HttpTestCase
-{
-    public function testExample()
-    {
-        $this->assertTrue(true);
-        $this->assertTrue(is_array($this->get('/')));
-    }
-}
+return [
+    'locale' => 'en',
+    'fallback_locale' => 'zn_CN',
+    'path' => BASE_PATH . '/storage/languages',
+];

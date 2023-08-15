@@ -9,10 +9,10 @@ declare(strict_types=1);
  * @contact  https://github.com/opencodeco/rinha-de-backend-2023-q3/discussions
  * @license  https://github.com/opencodeco/rinha-de-backend-2023-q3/blob/dev/LICENSE
  */
+use App\Controller\PeopleController;
 use Hyperf\HttpServer\Router\Router;
 
-Router::addRoute(['GET', 'POST', 'HEAD'], '/', 'App\Controller\IndexController@index');
-
-Router::get('/favicon.ico', function () {
-    return '';
-});
+Router::post('/pessoas', [PeopleController::class, 'create']);
+Router::get('/pessoas/{id}', [PeopleController::class, 'show']);
+Router::get('/pessoas', [PeopleController::class, 'search']);
+Router::get('/contagem-pessoas', [PeopleController::class, 'count']);
