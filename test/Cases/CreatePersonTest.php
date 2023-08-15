@@ -21,12 +21,12 @@ use function PHPUnit\Framework\assertSame;
  * @internal
  * @coversNothing
  */
-final class CreatePeopleTest extends HttpTestCase
+final class CreatePersonTest extends HttpTestCase
 {
-    public function testCreatePeopleWithEmptyNickname(): void
+    public function testCreatePersonWithEmptyNickname(): void
     {
         /** @var Response $response */
-        $response = $this->request('post', '/pessoas', [
+        $response = $this->request('POST', '/pessoas', [
             'headers' => [
                 'Content-Type' => 'application/json',
             ],
@@ -40,10 +40,10 @@ final class CreatePeopleTest extends HttpTestCase
         assertSame(422, $response->getStatusCode());
     }
 
-    public function testCreatePeopleWithNullNickname(): void
+    public function testCreatePersonWithNullNickname(): void
     {
         /** @var Response $response */
-        $response = $this->request('post', '/pessoas', [
+        $response = $this->request('POST', '/pessoas', [
             'headers' => [
                 'Content-Type' => 'application/json',
             ],
@@ -57,10 +57,10 @@ final class CreatePeopleTest extends HttpTestCase
         assertSame(422, $response->getStatusCode());
     }
 
-    public function testCreatePeopleWithEmptyName(): void
+    public function testCreatePersonWithEmptyName(): void
     {
         /** @var Response $response */
-        $response = $this->request('post', '/pessoas', [
+        $response = $this->request('POST', '/pessoas', [
             'headers' => [
                 'Content-Type' => 'application/json',
             ],
@@ -74,10 +74,10 @@ final class CreatePeopleTest extends HttpTestCase
         assertSame(422, $response->getStatusCode());
     }
 
-    public function testCreatePeopleWithNullName(): void
+    public function testCreatePersonWithNullName(): void
     {
         /** @var Response $response */
-        $response = $this->request('post', '/pessoas', [
+        $response = $this->request('POST', '/pessoas', [
             'headers' => [
                 'Content-Type' => 'application/json',
             ],
@@ -91,10 +91,10 @@ final class CreatePeopleTest extends HttpTestCase
         assertSame(422, $response->getStatusCode());
     }
 
-    public function testCreatePeopleWithEmptyBirthDate(): void
+    public function testCreatePersonWithEmptyBirthDate(): void
     {
         /** @var Response $response */
-        $response = $this->request('post', '/pessoas', [
+        $response = $this->request('POST', '/pessoas', [
             'headers' => [
                 'Content-Type' => 'application/json',
             ],
@@ -108,10 +108,10 @@ final class CreatePeopleTest extends HttpTestCase
         assertSame(422, $response->getStatusCode());
     }
 
-    public function testCreatePeopleWithNullBirthDate(): void
+    public function testCreatePersonWithNullBirthDate(): void
     {
         /** @var Response $response */
-        $response = $this->request('post', '/pessoas', [
+        $response = $this->request('POST', '/pessoas', [
             'headers' => [
                 'Content-Type' => 'application/json',
             ],
@@ -125,10 +125,10 @@ final class CreatePeopleTest extends HttpTestCase
         assertSame(422, $response->getStatusCode());
     }
 
-    public function testCreatePeopleWithInvalidBirthDate(): void
+    public function testCreatePersonWithInvalidBirthDate(): void
     {
         /** @var Response $response */
-        $response = $this->request('post', '/pessoas', [
+        $response = $this->request('POST', '/pessoas', [
             'headers' => [
                 'Content-Type' => 'application/json',
             ],
@@ -142,7 +142,7 @@ final class CreatePeopleTest extends HttpTestCase
         assertSame(422, $response->getStatusCode());
     }
 
-    public function testCreatePeople(): void
+    public function testCreatePerson(): void
     {
         /** @var Response $response */
         $response = $this->request('POST', '/pessoas', [
@@ -156,6 +156,6 @@ final class CreatePeopleTest extends HttpTestCase
             ],
         ]);
 
-        assertSame(201, $response->getStatusCode());
+        assertSame(201, $response->getStatusCode(), $response->getBody()->getContents());
     }
 }

@@ -12,14 +12,14 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use App\Request\PeopleRequest;
+use App\Request\PersonRequest;
 use Hyperf\HttpServer\Contract\RequestInterface;
 use Hyperf\HttpServer\Contract\ResponseInterface;
 use Psr\Http\Message\ResponseInterface as MessageResponseInterface;
 
-final class PeopleController
+final class PersonController
 {
-    public function create(PeopleRequest $request, ResponseInterface $response): MessageResponseInterface
+    public function create(PersonRequest $request, ResponseInterface $response): MessageResponseInterface
     {
         $person = $request->validated();
 

@@ -1,0 +1,17 @@
+version: '3'
+services:
+  db:
+    container_name: rinha-de-backend-db
+    image: mysql:8.1
+    command: --default-authentication-plugin=mysql_native_password
+    environment:
+      MYSQL_ROOT_PASSWORD: opencodeco
+      MYSQL_DATABASE: opencodeco
+    volumes:
+      - ./migrations.sql:/docker-entrypoint-initdb.d/migrations.sql
+    ports:
+      - 3306:3306
+
+networks:
+  default:
+    name: rinha-de-backend
