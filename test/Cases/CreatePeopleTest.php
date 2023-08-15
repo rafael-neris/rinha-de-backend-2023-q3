@@ -27,6 +27,9 @@ final class CreatePeopleTest extends HttpTestCase
     {
         /** @var Response $response */
         $response = $this->request('post', '/pessoas', [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
             'json' => [
                 'apelido' => '',
                 'nome' => 'OpenCodeCo',
@@ -41,6 +44,9 @@ final class CreatePeopleTest extends HttpTestCase
     {
         /** @var Response $response */
         $response = $this->request('post', '/pessoas', [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
             'json' => [
                 'apelido' => null,
                 'nome' => 'OpenCodeCo',
@@ -55,6 +61,9 @@ final class CreatePeopleTest extends HttpTestCase
     {
         /** @var Response $response */
         $response = $this->request('post', '/pessoas', [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
             'json' => [
                 'apelido' => 'opencodeco',
                 'nome' => '',
@@ -69,6 +78,9 @@ final class CreatePeopleTest extends HttpTestCase
     {
         /** @var Response $response */
         $response = $this->request('post', '/pessoas', [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
             'json' => [
                 'apelido' => 'opencodeco',
                 'nome' => null,
@@ -83,6 +95,9 @@ final class CreatePeopleTest extends HttpTestCase
     {
         /** @var Response $response */
         $response = $this->request('post', '/pessoas', [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
             'json' => [
                 'apelido' => 'opencodeco',
                 'nome' => 'OpenCodeCo',
@@ -97,6 +112,9 @@ final class CreatePeopleTest extends HttpTestCase
     {
         /** @var Response $response */
         $response = $this->request('post', '/pessoas', [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
             'json' => [
                 'apelido' => 'opencodeco',
                 'nome' => 'OpenCodeCo',
@@ -105,5 +123,22 @@ final class CreatePeopleTest extends HttpTestCase
         ]);
 
         assertSame(422, $response->getStatusCode());
+    }
+
+    public function testCreatePeople(): void
+    {
+        /** @var Response $response */
+        $response = $this->request('POST', '/pessoas', [
+            'headers' => [
+                'Content-Type' => 'application/json',
+            ],
+            'json' => [
+                'apelido' => 'opencodeco',
+                'nome' => 'OpenCodeCo',
+                'nascimento' => '2023-07-01',
+            ],
+        ]);
+
+        assertSame(201, $response->getStatusCode());
     }
 }

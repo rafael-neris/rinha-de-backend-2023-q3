@@ -31,8 +31,8 @@ class PeopleRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'apelido' => 'required|size:32',
-            'nome' => 'required|size:100',
+            'apelido' => 'required|max:32',
+            'nome' => 'required|max:100',
             'nascimento' => 'required|date_format:Y-m-d',
         ];
     }

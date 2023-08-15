@@ -23,7 +23,7 @@ final class PeopleController
     {
         $person = $request->validated();
 
-        return $response->json($person);
+        return $response->json($person)->withStatus(201);
     }
 
     public function show(RequestInterface $request, ResponseInterface $response): MessageResponseInterface
