@@ -10,4 +10,5 @@ declare(strict_types=1);
  * @license  https://github.com/opencodeco/rinha-de-backend-2023-q3/blob/dev/LICENSE
  */
 return [
+    \Hyperf\AsyncQueue\Process\ConsumerProcess::class
 ];
