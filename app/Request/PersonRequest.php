@@ -15,6 +15,7 @@ namespace App\Request;
 use App\Model\Person;
 use Hyperf\Codec\Json;
 use Hyperf\Validation\Request\FormRequest;
+use Ramsey\Uuid\Uuid;
 
 final class PersonRequest extends FormRequest
 {
@@ -40,16 +41,16 @@ final class PersonRequest extends FormRequest
         ];
     }
 
-    public function toPerson(): Person
+    public function toPerson(): array
     {
         $data = $this->validated();
         
-        return Person::create([
-            'id' => random_bytes(16),
+        return [
+            'id' => Uuid::uuid4()->toString(),
             'nick' => $data['apelido'],
             'name' => $data['nome'],
             'birth' => $data['nascimento'],
             'stack' => Json::encode($data['stack'] ?? null),
-        ]);
+        ];
     }
 }
