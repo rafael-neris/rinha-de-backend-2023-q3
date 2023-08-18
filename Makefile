@@ -22,4 +22,4 @@ up: .env
 
 .PHONY: test
 test: vendor/autoload.php
-	docker compose exec app composer test
+	docker compose exec api1 composer test
