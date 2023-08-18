@@ -10,17 +10,22 @@ PR da participação: [github.com/zanfranceschi/rinha-de-backend-2023-q3/pull/79
 
 ### Primeiros passos
 
-0. Copiar o arquivo de variávies de ambiente:
+#### Copiar o arquivo de variávies de ambiente
 ```shell
 cp .env.example .env
 ```
 
-1. Subir a aplicação com:
+#### Subir a aplicação
 ```shell
 docker compose up
 ```
 
-2. Executar os testes com:
+#### Instalar dependências
 ```shell
-docker compose exec app compose test
+docker compose exec app composer install
+```
+
+#### Executar os testes
+```shell
+docker compose exec app composer test
 ```
