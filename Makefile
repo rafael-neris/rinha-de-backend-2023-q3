@@ -3,7 +3,7 @@ IMAGE_NAME=opencodeco/rinha-de-backend:2023-q3
 default: build push
 
 vendor/autoload.php:
-	docker compose exec app composer install
+	docker run --rm -it --volume $(pwd):/app composer install
 
 .env: vendor/autoload.php
 	cp .env.example .env
