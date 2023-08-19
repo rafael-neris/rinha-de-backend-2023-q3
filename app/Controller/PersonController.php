@@ -60,11 +60,7 @@ final readonly class PersonController
     {
         $term = $request->getQueryParams()['t'] ?? null;
         if ($term) {
-            $list = Person::where(function (Builder $query) use ($term) {
-                $query->whereRaw("lower(name) like lower(\"%{$term}%\")")
-                    ->orWhereRaw("lower(nick) like lower(\"%{$term}%\")")
-                    ->orWhereRaw("lower(stack) like lower(\"%{$term}%\")");
-            })->limit(50)->get();
+            $list = Person::whereRaw('searchable like ?', [strtolower("%{$term}%")])->limit(50)->get();
 
             return $response->json($list);
         }

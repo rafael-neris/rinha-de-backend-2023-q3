@@ -49,6 +49,7 @@ final class PersonRequest extends FormRequest
             'name' => $data['nome'],
             'birth' => $data['nascimento'],
             'stack' => Json::encode($data['stack'] ?? null),
+            'searchable' => strtolower(join(" ", [$data['apelido'], $data['nome'], join(" ", $data['stack'] ?? [])]))
         ];
     }
 }
