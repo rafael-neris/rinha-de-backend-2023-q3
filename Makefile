@@ -26,7 +26,7 @@ up: .env
 
 .PHONY: test
 test: vendor/autoload.php
-	docker compose exec app composer test
+	docker compose exec app1 composer test
 
 .PHONY: stress
 stress: vendor/autoload.php

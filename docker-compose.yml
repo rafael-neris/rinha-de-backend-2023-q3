@@ -10,6 +10,7 @@ services:
         APP_STAGE: dev
     environment:
       DB_HOST: db
+      REDIS_HOST: cache
     volumes:
       - ./:/opt/www
     depends_on:
