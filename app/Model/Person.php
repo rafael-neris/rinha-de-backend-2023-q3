@@ -28,6 +28,8 @@ class Person extends Model
         'stack',
     ];
 
+    protected array $hidden = ['searchable'];
+
     /**
      * The attributes that should be cast to native types.
      */
