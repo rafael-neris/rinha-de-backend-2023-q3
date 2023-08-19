@@ -2,11 +2,15 @@ IMAGE_NAME=opencodeco/rinha-de-backend:2023-q3
 
 default: build push
 
-.env:
-	cp .env.example .env
-
 vendor/autoload.php:
 	docker compose exec app composer install
+
+.env: vendor/autoload.php
+	cp .env.example .env
+
+.PHONY: setup
+setup:
+	sh setup.sh
 
 .PHONY: build
 build:
@@ -23,3 +27,7 @@ up: .env
 .PHONY: test
 test: vendor/autoload.php
 	docker compose exec app composer test
+
+.PHONY: stress
+stress: vendor/autoload.php
+	sh ./stress-test/run-test.sh
